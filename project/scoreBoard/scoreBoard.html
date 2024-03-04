@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scoreBoard.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="score-board">
+            <h3 class="title">HOME</h3>
+            <h1 class="score" id="home-score">0</h1>
+            <div class="btn-control">
+            <button id="home-score-add-1" onclick="homeScoreadd1Point()">+1</button>
+            <button id="home-score-add-2" onclick="homeScoreadd2Point()">+2</button>
+            <button id="home-score-add-3" onclick="homeScoreadd3Point()">+3</button>
+        </div>
+        </div>
+        <div class="score-board">
+            <h3 class="title">GUEST</h3>
+            <h1 class="score" id="guest-score">0</h1>
+            <button id="guest-score-add-1" onclick="guestadd1Point()">+1</button>
+            <button id="guest-score-add-2"onclick="guestadd2Point()">+2</button>
+            <button id="guest-score-add-3"onclick="guestadd3Point()">+3</button>
+        </div>
+    </div>
+    <script src="scoreBoard.js"></script>
+</body>
+</html>
