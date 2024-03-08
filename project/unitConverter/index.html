@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="innerText">
+            <div class="darkmode">
+                <label for="" id="textMode">Dark Mode</label>
+            <label class="switch">
+                <input type="checkbox" id="mode">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <h2>Metric/Imperial Unit Conversion</h2>
+            <input id="inner-result" type="number">
+            <button onclick="renderConver()">Convert</button>
+        </div>
+        <div class="containerResult" id="result">
+            <div class="boxResult">
+                <h3>Length (Meter/Feet)</h3>
+                <p id="metter-feet"></p>
+            </div>
+
+            <div class="boxResult">
+                <h3>Length (Meter/Feet)</h3>
+                <p id="lit-galon"></p>
+            </div>
+
+            <div class="boxResult">
+                <h3>Length (Meter/Feet)</h3>
+                <p id="kilo-pound"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
