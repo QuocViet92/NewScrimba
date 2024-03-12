@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    font-family: "Source Sans 3", sans-serif;
+}
+
+h5 , p {
+    margin: 0px;
+}
+h5{
+    font-size: 13px;
+}
+p{
+    font-size: 12px;
+    font-weight: 400;
+}
+section{
+    background-color: white;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    background-color:#C6C6C6;
+    gap: 20px;
+}
+.darkText{
+    font-weight: 700;
+}
+
+.name , footer{
+    padding: 10px 10px;
+}
+.name{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.avarta{
+    width: 34px;
+    height: 34px;
+    border-radius: 100%;
+}
+.info{
+    line-height: 1.1;
+}
+img{
+    width: 100%;
+}
+.icon{
+    display: flex;
+    gap:10px;
+}
+footer h5{
+     margin: 5px 0;
+}
+.light{
+    font-weight: 400;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    border-bottom: 2px solid #C6C6C6;
+    background-color: white;
+    position: fixed;
+    width: 375px;
+    box-sizing: border-box;
+}
+.container{
+    width: 375px;
+    border: 1px solid #EDEDED;
+    overflow-y: auto;
+    height: 550px;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+::-webkit-scrollbar {
+    display: none;
+}
