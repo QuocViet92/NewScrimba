@@ -7,7 +7,7 @@ const posts = [
         post: "imgs/post-vangogh.png",
         comment: "just took a few mushrooms lol",
         likes: 21,
-        id:1
+        id:0
     },
     {
         name: "Gustave Courbet",
@@ -17,7 +17,7 @@ const posts = [
         post: "imgs/post-courbet.png",
         comment: "i'm feelin a bit stressed tbh",
         likes: 4,
-        id:2
+        id:1
     },
         {
         name: "Joseph Ducreux",
@@ -27,15 +27,16 @@ const posts = [
         post: "imgs/post-ducreux.png",
         comment: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
         likes: 152,
-        id:3
+        id:2
     }
 ]
+let like = false
 
 const mypost = document.getElementById('renderPost')
 
 function renderPost(data){
+    mypost.innerHTML=''
     for(let i of data){
-        console.log(i)
         mypost.innerHTML +=
         `<section>
         <div class="name">
@@ -69,11 +70,9 @@ function renderPost(data){
     
     const likeIcons = document.querySelectorAll('.like-icon');
     likeIcons.forEach(icon => {
-        icon.addEventListener('dblclick', function() {
+        icon.addEventListener('dblclick', function() {    
             const postId = icon.getAttribute('data-id');
-            console.log(postId)
             document.getElementById(postId).classList.add('colorRed')
-
             
         });
     });
@@ -81,6 +80,3 @@ function renderPost(data){
 }
 
 renderPost(posts)
-// function clickLike(id){
-
-// }
