@@ -79,3 +79,7 @@ header{
 ::-webkit-scrollbar {
     display: none;
 }
+.colorRed{
+    color: red;
+}
+

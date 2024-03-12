@@ -6,7 +6,8 @@ const posts = [
         avatar: "imgs/avatar-vangogh.png",
         post: "imgs/post-vangogh.png",
         comment: "just took a few mushrooms lol",
-        likes: 21
+        likes: 21,
+        id:1
     },
     {
         name: "Gustave Courbet",
@@ -15,7 +16,8 @@ const posts = [
         avatar: "imgs/avatar-courbet.png",
         post: "imgs/post-courbet.png",
         comment: "i'm feelin a bit stressed tbh",
-        likes: 4
+        likes: 4,
+        id:2
     },
         {
         name: "Joseph Ducreux",
@@ -24,7 +26,8 @@ const posts = [
         avatar: "imgs/avatar-ducreux.png",
         post: "imgs/post-ducreux.png",
         comment: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
-        likes: 152
+        likes: 152,
+        id:3
     }
 ]
 
@@ -45,7 +48,7 @@ function renderPost(data){
         <img src=${i.post} alt="">
         <footer>
             <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                <svg class='like-icon' data-id='${i.id}' id='${i.id}' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
                   </svg>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
@@ -60,7 +63,24 @@ function renderPost(data){
         </footer>
         <section>
         `
+       
+      
     }
     
+    const likeIcons = document.querySelectorAll('.like-icon');
+    likeIcons.forEach(icon => {
+        icon.addEventListener('dblclick', function() {
+            const postId = icon.getAttribute('data-id');
+            console.log(postId)
+            document.getElementById(postId).classList.add('colorRed')
+
+            
+        });
+    });
+    
 }
+
 renderPost(posts)
+// function clickLike(id){
+
+// }
