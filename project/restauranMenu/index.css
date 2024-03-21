@@ -5,121 +5,121 @@ body{
     justify-content: center;
     width: 100vw;
     box-sizing: border-box;
-}
-.container{
+  }
+  .container{
     width: 600px;
     border: 5px solid black;
     border-radius: 15px;
     overflow-y: auto;
     height: 700px;
-}
-::-webkit-scrollbar {
+  }
+  ::-webkit-scrollbar {
     display: none;
-}
-header{
+  }
+  header{
     background-image: url(backgroung.jpg);
     background-size: cover;
     background-position: center;
     padding: 50px 40px;
     color: white;
-
-}
-.pay{
+  
+  }
+  .pay{
     padding: 10px;
     width: 100%;
     background-color: #16DB99;
     color: white;
     border: none;
-}
-main {
+  }
+  main {
    
     padding: 20px 30px;
     position: relative;
-}
-.info{
+  }
+  .info{
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.food h2{
+  }
+  
+  .food h2{
     font-size: 78px;
     width: 100px;
     display: flex;
     justify-content: center;
    
-}
-h1, h3, p ,h2, .info h4{
+  }
+  h1, h3, p ,h2, .info h4{
     margin: 0px;
-}
-.container h1{
+  }
+  .container h1{
     font-size: 39px;
-}
-.container h3{
+  }
+  .container h3{
     font-size: 22px;
-}
-.food{
-display: flex;
-width: 100%;
-align-items: center;
-gap: 20px;
-margin: 20px 0px;
-border-bottom: 1px solid #D2D2D2;
-}
-.btn-icr{
+  }
+  .food{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0px;
+  border-bottom: 1px solid #D2D2D2;
+  }
+  .btn-icr{
   display: flex;
    margin-left: auto;
    gap: 20px;
     
-}
-.btn-icr button{
+  }
+  .btn-icr button{
     font-size: 32px;
     border-radius: 100%;
     border: none;
     cursor: pointer;
     width: 35px;
-}
-.centerClass{
+  }
+  .centerClass{
     display: flex;
     justify-content: center;
-}
-.btn-icr button:active{
+  }
+  .btn-icr button:active{
     color: red;
-}
-
-.btn-icr input{
+  }
+  
+  .btn-icr input{
     width: 50px;
     font-size: 32px;
     text-align: center;
-}
-.oder{
+  }
+  .oder{
     text-align: center;
-}
-.billFoobs{
+  }
+  .billFoobs{
     display: flex;
-}
-.aglinLeft{
+  }
+  .aglinLeft{
     margin-left: auto;
-}
-.total{
+  }
+  .total{
     display: flex;
-}
-.billFoobs span{
+  }
+  .billFoobs span{
     font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
     cursor: pointer;
-}
-.billFoobs h4{
+  }
+  .billFoobs h4{
     margin-top: 0px;
-}
-.innerBill{
+  }
+  .innerBill{
     border-bottom: 1px solid #D2D2D2; 
-}
-.hidden{
+  }
+  .hidden{
     display: none;
-}
-.card{
+  }
+  .card{
     background-color: white;
     position: fixed;
     top: 50%;
@@ -130,88 +130,97 @@ border-bottom: 1px solid #D2D2D2;
     text-align: center;
     padding: 30px 20px;
     box-shadow: 5.186544418334961px 5.186544418334961px 255.43731689453125px 0px #00000080;
-
-}
-.card h2 {
+  
+  }
+  .card h2 {
     font-size: 24px;
-}
-.gruopInput {
+  }
+  .gruopInput {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-top: 30px;
     margin-bottom: 30px;
     
-}
-.gruopInput input{
+  }
+  .gruopInput input{
     height: 50px;
     border: 1.3px solid #757575;
     font-size: 20px;
     padding-left: 20px;
     
-}
-.darkThem{
+  }
+  .darkThem{
     color: white;
     background-color: black;
-}
-.darkLight{
+  }
+  .darkLight{
     cursor: pointer;
     font-size: 30px;
- position: absolute;
- top:10px;
- right: 35px;
-}
-.comments{
+  position: absolute;
+  top:10px;
+  right: 35px;
+  }
+  .comments{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
     position: fixed;
     padding: 20px 10px;
     width: 400px;
     height: 200px;
-    border: 1px solid #D2D2D2;
     display: none;
     flex-direction: column;
-}
-.comments span{
+  }
+  .commentsLight{
+    background-color: white;
+    border: 1px solid #D2D2D2;
+    color: black;
+  }
+  .commentsDark{
+    background-color: black;
+    color: white;
+    border: 1px solid #D2D2D2;
+  
+  }
+  .comments span{
     font-weight: 900;
-}
-.comments p{
+  }
+  .comments p{
     border-radius: 8px;
     padding: 0 10px;
     background-color: #D2D2D2;
     display: inline-block;
-
-}
-.comments input{
+  
+  }
+  .comments input{
     height: 25px;
     border: none;
     border-bottom: 1px solid black;
-}
-.controlReply{
+  }
+  .controlReply{
     margin-top: auto;
     text-align: center;
    
-}
-.comment{
+  }
+  .comment{
     height: 150px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-.btnSend button{
+  }
+  .btnSend button{
     border: none;
-}
-.closebtn{
+  }
+  .closebtn{
     position: absolute;
     top: -25px;
     right: -15px;
     cursor: pointer;
     font-size: 15px;
-}
-input[type="number"]::-webkit-inner-spin-button, 
-input[type="number"]::-webkit-outer-spin-button {
+  }
+  input[type="number"]::-webkit-inner-spin-button, 
+  input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0; 
-}
+  }

@@ -3,9 +3,12 @@ const closeCard = document.getElementById('closeCard')
 const cardDetail =document.getElementById('cardDetail')
 const darkThem = document.getElementById('darkLight')
 const mainEL = document.getElementById('mainFood')
+let isDark = false
 
 darkThem.addEventListener('click',function(){
 mainEL.classList.toggle('darkThem')
+    isDark =!isDark
+    render()
 })
 
 closeCard.addEventListener('click',function(){
@@ -54,11 +57,13 @@ function handleClickSendComments(id){
 function handleCloseComment(id){
     const targetTweetObj = menuArray.filter(item => item.id == id)[0]
     document.getElementById(`comments-${targetTweetObj.id}`).style.display = "none"
+   
 }
 
 function handleOpenComments(id){
     const targetTweetObj = menuArray.filter(item => item.id == id)[0]
     document.getElementById(`comments-${targetTweetObj.id}`).style.display = "flex"
+    
 }
 function handleClickRemove(id){
     const targetTweetObj = menuArray.filter(item => item.id == id)[0]
@@ -101,9 +106,10 @@ function getHtmlMenu(arr){
     }).join(" ")
     let ingredient = item.ingredients.join(", ")
     let classHidden = item.quality == 0 ? 'hidden' : ""
+    let classDark = isDark ? 'commentsDark':"commentsLight" 
     return `<div class="food">
 
-    <div class="comments" id='comments-${item.id}'>
+    <div class="comments ${classDark}" id='comments-${item.id}'>
             <div class="comment">
               ${commentshtml}
             </div>
