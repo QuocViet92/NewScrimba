@@ -1,0 +1,142 @@
+body{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    box-sizing: border-box;
+}
+.container{
+    width: 600px;
+}
+header{
+    background-image: url(backgroung.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 50px 40px;
+    color: white;
+
+}
+.pay{
+    padding: 10px;
+    width: 100%;
+    background-color: #16DB99;
+    color: white;
+    border: none;
+}
+main {
+    padding: 20px 30px;
+}
+.food h2{
+    font-size: 78px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+   
+}
+h1, h3, p ,h2{
+    margin: 0px;
+}
+.container h1{
+    font-size: 39px;
+}
+.container h3{
+    font-size: 22px;
+}
+.food{
+display: flex;
+width: 100%;
+align-items: center;
+gap: 20px;
+margin: 20px 0px;
+border-bottom: 1px solid #D2D2D2;
+}
+.btn-icr{
+  display: flex;
+   margin-left: auto;
+   gap: 20px;
+    
+}
+.btn-icr button{
+    font-size: 32px;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    width: 35px;
+}
+.centerClass{
+    display: flex;
+    justify-content: center;
+}
+.btn-icr button:active{
+    color: red;
+}
+
+.btn-icr input{
+    width: 50px;
+    font-size: 32px;
+    text-align: center;
+}
+.oder{
+    text-align: center;
+}
+.billFoobs{
+    display: flex;
+}
+.aglinLeft{
+    margin-left: auto;
+}
+.total{
+    display: flex;
+}
+span{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.billFoobs h4{
+    margin-top: 0px;
+}
+.innerBill{
+    border-bottom: 1px solid #D2D2D2; 
+}
+.hidden{
+    display: none;
+}
+.card{
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    width: 525px;
+    text-align: center;
+    padding: 30px 20px;
+    box-shadow: 5.186544418334961px 5.186544418334961px 255.43731689453125px 0px #00000080;
+
+}
+.card h2 {
+    font-size: 24px;
+}
+.gruopInput {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
+.gruopInput input{
+    height: 50px;
+    border: 1.3px solid #757575;
+    font-size: 20px;
+    padding-left: 20px;
+    
+}
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
