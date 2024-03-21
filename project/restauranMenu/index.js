@@ -1,6 +1,12 @@
 import {menuArray} from'./data.js'
 const closeCard = document.getElementById('closeCard')
 const cardDetail =document.getElementById('cardDetail')
+const darkThem = document.getElementById('darkLight')
+const mainEL = document.getElementById('mainFood')
+
+darkThem.addEventListener('click',function(){
+mainEL.classList.toggle('darkThem')
+})
 
 closeCard.addEventListener('click',function(){
     cardDetail.classList.add('hidden')
@@ -16,6 +22,12 @@ document.addEventListener('click',function(e){
         handleClickRemove(e.target.dataset.remove)
     }else if(e.target.dataset.pay){
         cardDetail.classList.remove('hidden')
+    }else if(e.target.dataset.opencomment){
+        handleOpenComments(e.target.dataset.opencomment)
+    }else if(e.target.dataset.closecomments){
+        handleCloseComment(e.target.dataset.closecomments)
+    }else if(e.target.dataset.sendcomment){
+        handleClickSendComments(e.target.dataset.sendcomment)
     }
 })
 
@@ -25,7 +37,29 @@ document.addEventListener('change',function(e){
     }
 })
 
+function handleClickSendComments(id){
+    console.log(id)
+    const targetTweetObj = menuArray.filter(item => item.id == id)[0]
+    const inputComment = document.getElementById(`inputComment-${id}`)
+    if(inputComment.value){
+        targetTweetObj.rate.push({
+               user:"My Post",
+               comment: `${inputComment.value}` 
+        })
+        console.log(targetTweetObj)
+        render()
+    }
+}
 
+function handleCloseComment(id){
+    const targetTweetObj = menuArray.filter(item => item.id == id)[0]
+    document.getElementById(`comments-${targetTweetObj.id}`).style.display = "none"
+}
+
+function handleOpenComments(id){
+    const targetTweetObj = menuArray.filter(item => item.id == id)[0]
+    document.getElementById(`comments-${targetTweetObj.id}`).style.display = "flex"
+}
 function handleClickRemove(id){
     const targetTweetObj = menuArray.filter(item => item.id == id)[0]
     targetTweetObj.quality = 0
@@ -58,13 +92,32 @@ function handleClickGiam(id){
 
 function getHtmlMenu(arr){
    return  arr.map(item => {
+    let commentshtml = item.rate.map(commensts =>{
+        return `
+        <div>
+            <p><span>${commensts.user}:</span>${commensts.comment}</p>
+        </div>   
+        `
+    }).join(" ")
     let ingredient = item.ingredients.join(", ")
     let classHidden = item.quality == 0 ? 'hidden' : ""
     return `<div class="food">
+
+    <div class="comments" id='comments-${item.id}'>
+            <div class="comment">
+              ${commentshtml}
+            </div>
+            <div class="controlReply">
+            <input type="text" id='inputComment-${item.id}'>
+            <button class="btnSend" data-sendcomment=${item.id}>Send</button>
+        </div>
+        <h5 class="closebtn" data-closecomments=${item.id}>X</p>
+        </div>
                 <h2>${item.emoji}</h2>
                 <div class="info">
                 <h4>${item.name}</h4>
                 <p>${ingredient}</p>
+                <i class="fa-regular fa-comment" data-opencomment=${item.id}></i>
                 <h4>$${item.price}</h4>
                 </div>
                     <div class="btn-icr">

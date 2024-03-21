@@ -5,7 +5,17 @@ export const menuArray = [
         id: 0,
         price: 14,
         emoji: "🍕",
-        quality: '0'
+        quality: '0',
+        rate: [
+            {
+               user:"marry",
+               comment:'goob' 
+            },
+            {
+                user:'scrimba',
+                comment:" not bad"
+            }
+        ]
     },
     {
         name: "Hamburger",
@@ -13,7 +23,17 @@ export const menuArray = [
         price: 12,
         emoji: "🍔",
         id: 1,
-        quality:'0'
+        quality:'0',
+        rate: [
+            {
+               user:"marryC",
+               comment:'goob' 
+            },
+            {
+                user:'scrimbaC',
+                comment:" not bad"
+            }
+        ]
     },
         {
         name: "Beer",
@@ -21,6 +41,16 @@ export const menuArray = [
         price: 12,
         emoji: "🍺",
         id: 2,
-        quality:'0'
+        quality:'0',
+        rate: [
+            {
+               user:"marrT",
+               comment:'goob' 
+            },
+            {
+                user:'scrimbaT',
+                comment:" not bad"
+            }
+        ]
     }
 ]
