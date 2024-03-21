@@ -30,15 +30,13 @@ function handleClickRemove(id){
     const targetTweetObj = menuArray.filter(item => item.id == id)[0]
     targetTweetObj.quality = 0
     render()
-    console.log(targetTweetObj)
 }
 
 function handleChangeInput(id){
     const targetTweetObj = menuArray.filter(item => item.id == id)[0]
     const inputValue = document.getElementById(`id-${id}`)
     if(inputValue.value < 0){
-        inputValue.value = 0
-        
+        inputValue.value = 0   
     }  
     targetTweetObj.quality = inputValue.value
     render()
@@ -48,7 +46,6 @@ function handleClickTang(id){
     const targetTweetObj = menuArray.filter(item => item.id == id)[0]
     targetTweetObj.quality++
     render()
-    
 }
 
 function handleClickGiam(id){
@@ -57,38 +54,36 @@ function handleClickGiam(id){
     targetTweetObj.quality--
     }
     render()
-    console.log(targetTweetObj)
 }
+
 function getHtmlMenu(arr){
    return  arr.map(item => {
     let ingredient = item.ingredients.join(", ")
     let classHidden = item.quality == 0 ? 'hidden' : ""
-    
-return `<div class="food">
-<h2>${item.emoji}</h2>
-<div class="info">
-<h4>${item.name}</h4>
-<p>${ingredient}</p>
-<h4>$${item.price}</h4>
-</div>
-    <div class="btn-icr">
-    <button class="centerClass ${classHidden}" data-giam=${item.id}>-</button>
-    <input type="number" id="id-${item.id}" data-nhap=${item.id} value=${item.quality}>
-    <button data-tang=${item.id}>+</button>
-</div>
-</div>`
+    return `<div class="food">
+                <h2>${item.emoji}</h2>
+                <div class="info">
+                <h4>${item.name}</h4>
+                <p>${ingredient}</p>
+                <h4>$${item.price}</h4>
+                </div>
+                    <div class="btn-icr">
+                    <button class="centerClass ${classHidden}" data-giam=${item.id}>-</button>
+                   <input type="number" id="id-${item.id}" data-nhap=${item.id} value=${item.quality}>
+                   <button data-tang=${item.id}>+</button>
+                </div>
+            </div>`
    }).join(" ") 
 }
 
 function getBill(arr){
-
     return arr.map(item => {
         if(item.quality > 0){
             let totalPrince = item.price * item.quality
         return ` <div class="billFoobs">
-        <h4>${item.name} <span data-remove=${item.id}>remove</span></h4>
-        <h4 class="aglinLeft" >$${totalPrince}</h4>
-    </div>
+                     <h4>${item.name} <span data-remove=${item.id}>remove</span></h4>
+                     <h4 class="aglinLeft" >$${totalPrince}</h4>
+                 </div>
     `
         }
     }).join('')
@@ -104,16 +99,15 @@ function getTotalBill(){
     if(total > 0){
     innerBillTotal.innerHTML = ` 
     <div class="total">
-    <h4>total</h4>
-    <h4 class="aglinLeft">${total}</h4>
+        <h4>total</h4>
+        <h4 class="aglinLeft">${total}</h4>
     </div>
     <button class="pay" data-pay="payoder">Complete order</button>
     
     `
     }else{
         innerBillTotal.innerHTML =''
-    }
-    
+    } 
 }
 function renderBill(){
     const innerBill = document.getElementById('getbill')
