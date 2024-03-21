@@ -110,6 +110,9 @@ function getHtmlMenu(arr){
     return `<div class="food">
 
     <div class="comments ${classDark}" id='comments-${item.id}'>
+            <div class='nameitem'>
+            <h6>${item.name}</h6>
+            </div>
             <div class="comment">
               ${commentshtml}
             </div>
@@ -117,7 +120,7 @@ function getHtmlMenu(arr){
             <input type="text" id='inputComment-${item.id}'>
             <button class="btnSend" data-sendcomment=${item.id}>Send</button>
         </div>
-        <h5 class="closebtn" data-closecomments=${item.id}>X</p>
+        <h5 class="closebtn" data-closecomments=${item.id}>X</h5>
         </div>
                 <h2>${item.emoji}</h2>
                 <div class="info">

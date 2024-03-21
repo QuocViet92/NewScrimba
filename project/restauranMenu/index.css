@@ -167,6 +167,7 @@ body{
     transform: translate(-50%, -50%);
     position: fixed;
     padding: 20px 10px;
+    padding-top: 0px;
     width: 400px;
     height: 200px;
     display: none;
@@ -215,10 +216,18 @@ body{
   .closebtn{
     position: absolute;
     top: -25px;
-    right: -15px;
+    right: 5px;
     cursor: pointer;
     font-size: 15px;
   }
+  .nameitem{
+    font-size: 30px;
+    text-align: center;
+    margin: 10px;
+     }
+     .nameitem h6{
+        margin: 0;
+     }
   input[type="number"]::-webkit-inner-spin-button, 
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
