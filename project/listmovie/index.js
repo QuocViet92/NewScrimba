@@ -1,153 +1,137 @@
-
-
-const btn =document.getElementById('search-btn')
-const inputEl = document.getElementById('movie-input')
 const listEl = document.getElementById('list')
-let myLeads = []
-let arrList = [] 
-const myWachList = document.getElementById('myWacthList')
-const inputFiel =document.getElementById('inputSecrch')
+const inputEl = document.getElementById('inputSecrch')
+const btnSearch = document.getElementById('search-btn')
+const watchlishInner  = document.getElementById('searchList')
+const inputSearch =document.getElementById('movie-input')
+let localWatchlist = JSON.parse(localStorage.getItem('watchlist')) || []
 
-if(JSON.parse(localStorage.getItem("myLeads"))){
-myLeads =JSON.parse(localStorage.getItem("myLeads"))
-}
-
-function renderMyWacthList(lead){
-  if(myLeads == 0){
-    listEl.innerHTML =  `<div class="textmwl">
-    <h5>Your watchlist is looking a little empty...</h5>
-    <a href="index.html">Let’s add some movies!</a>
-</div>`
-  }else{
-    listEl.innerHTML = ""
-          lead.forEach(item => {
-          fetch(`http://www.omdbapi.com/?apikey=3f9608a5&i=${item}`)
-          .then(res => res.json())
-          .then(info =>{
-              listEl.innerHTML += `<div class="boxmovie">
-              <img src=${info.Poster} alt="">
-              <div class="infomovie">
-                <h1>${info.Title}</h1>
-                <div class="timemovie">
-                  <p>${info.Runtime}</p>
-                  <p>${info.Genre}</p>
-                  <a data-detele=${item} id=${item}>- Watchlist</a>
-                </div>
-                <p class='textColor'>${info.Plot}</p>
-              </div>
-            </div>
-             
-            `
-          })
-      })
-    }
-  }
-
-  const btnswap =document.getElementById('searchList')
-  if(btnswap){
-  btnswap.addEventListener('click',function(){
-    renderMyWacthList(myLeads)
-    listEl.innerHTML = ''
-    
-  })
-  inputFiel.style.display= "none"
-  renderMyWacthList(myLeads)
-
-  
-}
- 
-
-console.log(myLeads)
-
-btn.addEventListener('click',async function(){
- 
-    listEl.innerHTML =''
-    const res = await   fetch(`http://www.omdbapi.com/?apikey=3f9608a5&s=${inputEl.value}`)
-    const data = await res.json()
-        console.log(data.Response)
-        
-        if(data.Response !== undefined && data.Response !== 'False'){
-            data.Search.forEach(item => {
-              arrList.push({id:item.imdbID,save:false})
-            })
-            
-            renderList(arrList)
-            
-        }else{
-            listEl.innerHTML =`<div class="textmwl">
-            <p>Unable to find what you’re looking for. Please try another search.</p>
-            </div>`
-        }
-        
-    
-})
+btnSearch.addEventListener('click',handleSearch)
 
 function renderList(arr){
-    if(myLeads){
-  for(let i of arr){
-    for(let j of myLeads){
-      if(i.id == j){
-        i.save = !i.save
-      }
+  let html =''
+  let htmlADd =''
+   listEl.innerHTML = ''
+   arr.forEach(element => {
+    const itemId = element.imdbID 
+    const istheid = (element) => element === itemId
+    const indexRender = localWatchlist.findIndex(istheid)
+
+    if(indexRender !== -1){
+      htmlADd =` <a data-idd=${itemId}  id=id-${itemId}> - Watchlist</a>`
+    }else{
+      htmlADd =` <a data-idd=${itemId} id=id-${itemId}> + Watchlist</a>`
+ 
     }
-  }
+
+    html +=`<div class="boxmovie" id='box-${itemId}'>
+    <img src=${element.Poster} alt="">
+    <div class="infomovie">
+      <h1>${element.Title}</h1>
+      <div class="timemovie">
+        <p>${element.Runtime}</p>
+        <p>${element.Genre}</p>
+        ${htmlADd}
+      </div>
+      <p class='textColor'>${element.Plot}</p>
+    </div>
+  </div>
+  `  
+   });
+   listEl.innerHTML = html
 }
-    listEl.innerHTML = ""
-        arr.forEach(item => {
-        fetch(`http://www.omdbapi.com/?apikey=3f9608a5&i=${item.id}`)
-        .then(res => res.json())
-        .then(info =>{
-          let save = item.save ? '-' : "+"
-            listEl.innerHTML += `<div class="boxmovie">
-            <img src=${info.Poster} alt="">
-            <div class="infomovie">
-              <h1>${info.Title}</h1>
-              <div class="timemovie">
-                <p>${info.Runtime}</p>
-                <p>${info.Genre}</p>
-                <a data-save=${item.id} id=${item.id}>${save}Watchlist</a>
-              </div>
-              <p class='textColor'>${info.Plot}</p>
-            </div>
-          </div>
-           
-          `
-        })
-    })
+
+async function handleSearch(){
+  if(inputSearch){
+    const res = await fetch(`https://www.omdbapi.com/?apikey=3f9608a5&s=${inputSearch.value}`)
+    const data = await res.json()
+        if(data.Search !==undefined &&  data.Response !== 'False'){
+          const completeData = await Promise.all(  
+            data.Search.map(async data=>{
+              const response  = await fetch(`https://www.omdbapi.com/?apikey=3f9608a5&i=${data.imdbID}`)
+              const info = await response .json()
+              return info
+            })
+           )
+           renderList(completeData)
+        }    
+  }
 }
 
 document.addEventListener('click',function(e){
-  if(e.target.dataset.save){
-    saveList(e.target.dataset.save)
-  }else if(e.target.dataset.detele){
-    console.log(e.target.dataset.detele)
-    handleDeleteMyList(e.target.dataset.detele)
+  if(e.target.dataset.idd){
+    handleClickAD(e.target.dataset.idd)
+  }else if(e.target.dataset.deletelist){
+    console.log(e.target.dataset.deletelist)
+    handleDeleteList(e.target.dataset.deletelist)
   }
 })
 
-function handleDeleteMyList(item){
-   myLeads = myLeads.filter(items => items !==item)
-   localStorage.setItem("myLeads",JSON.stringify(myLeads))
-   renderMyWacthList(myLeads)
+function handleDeleteList(id){
+const box = document.getElementById(`box-delete-${id}`)
+box.style.display = 'none'
+localWatchlist = localWatchlist.filter(item => item !== id)
+localStorage.setItem('watchlist', JSON.stringify(localWatchlist));
+if(localWatchlist.length===0){
+  listEl.innerHTML = `<div class="textmwl">
+ <h5>Your watchlist is looking a little empty...</h5>
+ <a href="index.html">Let’s add some movies!</a>
+</div>`
+}
 }
 
-function saveList(item){
-  console.log(item)
-  console.log(arrList)
-
-  const current = arrList.filter(items =>  items.id == item)[0]
-  current.save = !current.save
-  
-  if(current.save){
-    document.getElementById(`${item}`).innerHTML = '- Watchlist'
-    myLeads.push(item)
-    console.log(current.save)
+function handleClickAD(id){
+  const istheid = (element) => element === id
+  const indexRender = localWatchlist.findIndex(istheid) 
+  if(indexRender !== -1){
+    localWatchlist = localWatchlist.filter(element => element !== id) 
+    document.getElementById(`id-${id}`).innerHTML = ` <a data-idd=${id}  id=id-${id}> + Watchlist</a>`
   }else{
-    document.getElementById(`${item}`).innerHTML = '+ Watchlist'
-   myLeads   = myLeads.filter(items => items !== item )
+    localWatchlist.push(id)
+    document.getElementById(`id-${id}`).innerHTML = ` <a data-idd=${id}  id=id-${id}> - Watchlist</a>`
   }
-  
-  localStorage.setItem("myLeads",JSON.stringify(myLeads))
-  console.log(myLeads)
-  
+  localStorage.setItem('watchlist', JSON.stringify(localWatchlist));
 }
+
+function renderWatchList(arr){
+  let html =''
+   listEl.innerHTML = ''
+   arr.forEach(element => {
+    html +=`<div class="boxmovie" id='box-delete-${element.imdbID}'>
+    <img src=${element.Poster} alt="">
+    <div class="infomovie">
+      <h1>${element.Title}</h1>
+      <div class="timemovie">
+        <p>${element.Runtime}</p>
+        <p>${element.Genre}</p>
+        <a data-deletelist=${element.imdbID}  id=id-${element.imdbID}> - Watchlist</a>
+      </div>
+      <p class='textColor'>${element.Plot}</p>
+    </div>
+  </div>   
+  `  
+   });
+   listEl.innerHTML = html
+}
+
+if(watchlishInner){
+  inputEl.style.display ='none'
+  listEl.innerHTML =`<h1>Hello<h1>`
+  if (localWatchlist && localWatchlist.length > 0) {
+    Promise.all(localWatchlist.map(async element => {
+      const res = await fetch(`https://www.omdbapi.com/?apikey=3f9608a5&i=${element}`);
+      const data = await res.json();
+      return data;
+  })).then(completeData => {
+      renderWatchList(completeData);
+  })
+} else {
+ listEl.innerHTML = `<div class="textmwl">
+ <h5>Your watchlist is looking a little empty...</h5>
+ <a href="index.html">Let’s add some movies!</a>
+</div>`
+}
+
+}
+
+
+
