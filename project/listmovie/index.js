@@ -17,9 +17,9 @@ function renderList(arr){
     const indexRender = localWatchlist.findIndex(istheid)
 
     if(indexRender !== -1){
-      htmlADd =` <a data-idd=${itemId}  id=id-${itemId}> - Watchlist</a>`
+      htmlADd =` <a class="watch" data-idd=${itemId}  id=id-${itemId}> - Watchlist</a>`
     }else{
-      htmlADd =` <a data-idd=${itemId} id=id-${itemId}> + Watchlist</a>`
+      htmlADd =` <a class="watch" data-idd=${itemId} id=id-${itemId}> + Watchlist</a>`
  
     }
 
@@ -55,6 +55,11 @@ async function handleSearch(){
            renderList(completeData)
         }    
   }
+  else{
+    listEl.innerHTML =`<div class="textmwl">
+    <p>Unable to find what you’re looking for. Please try another search.</p>
+    </div>`
+  }
 }
 
 document.addEventListener('click',function(e){
@@ -84,10 +89,10 @@ function handleClickAD(id){
   const indexRender = localWatchlist.findIndex(istheid) 
   if(indexRender !== -1){
     localWatchlist = localWatchlist.filter(element => element !== id) 
-    document.getElementById(`id-${id}`).innerHTML = ` <a data-idd=${id}  id=id-${id}> + Watchlist</a>`
+    document.getElementById(`id-${id}`).innerHTML = ` <a class="watch" data-idd=${id}  id=id-${id}> + Watchlist</a>`
   }else{
     localWatchlist.push(id)
-    document.getElementById(`id-${id}`).innerHTML = ` <a data-idd=${id}  id=id-${id}> - Watchlist</a>`
+    document.getElementById(`id-${id}`).innerHTML = ` <a class="watch" data-idd=${id}  id=id-${id}> - Watchlist</a>`
   }
   localStorage.setItem('watchlist', JSON.stringify(localWatchlist));
 }
@@ -103,7 +108,7 @@ function renderWatchList(arr){
       <div class="timemovie">
         <p>${element.Runtime}</p>
         <p>${element.Genre}</p>
-        <a data-deletelist=${element.imdbID}  id=id-${element.imdbID}> - Watchlist</a>
+        <a class="watch" data-deletelist=${element.imdbID}  id=id-${element.imdbID}> - Watchlist</a>
       </div>
       <p class='textColor'>${element.Plot}</p>
     </div>
