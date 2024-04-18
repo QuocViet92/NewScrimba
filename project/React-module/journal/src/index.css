@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+   
+   display: flex;
+   justify-content: center;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.container{
+  width: 550px;
+}
+nav{
+  display:  flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+  color: white;
+  background-color: #F55A5A;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+}
+h5{
+  font-size:  0.90625em; /*14.5*/
+  margin: 0;
+}
+.card{
+  width:100% ;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.card >img{
+  width: 125px;
+  height: 170px;
+  border-radius: 5px;
+}
+
+.info{
+  font-size: 10.5px;
+  flex-grow: 1;
+}
+.from{
+  display:  flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.location{
+  letter-spacing: 2px;
+  margin: 0;
+}
+.info > h1{
+  margin: 0;
+}
+.info  a {
+  color: #918E9B;
+}
+.info i{
+  color: #F55A5A  ;
+}
+
