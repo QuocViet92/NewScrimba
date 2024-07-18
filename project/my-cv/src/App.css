@@ -1,0 +1,15 @@
+body {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.header{
+  display:  flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header ul a{
+  list-style:  none;
+  text-decoration: none;
+  margin-left: 20px;
+}
