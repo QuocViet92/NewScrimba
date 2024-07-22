@@ -5,7 +5,6 @@ import Loadding from "./Loading";
 import {decode} from 'html-entities';
 
 export default function Form(props){
-    const [isLoading, setIsloading] = React.useState(true)
     const [countCorect,setCountCorect] = React.useState('???')
     const [clickk,setClickk]=React.useState(true)
     const [formData, setFormData] = React.useState([]);
@@ -75,14 +74,7 @@ export default function Form(props){
             })
         })}
         }
-        React.useEffect(()=>{
-            const loaddingTime = setTimeout(() => {
-                setIsloading(false)
-            }, 1000);
-            return  ()=>{
-                clearTimeout(loaddingTime)
-            }
-        },[])
+      
         const formEl = formData.map(item => (
             <Answers
             test ={clickk}

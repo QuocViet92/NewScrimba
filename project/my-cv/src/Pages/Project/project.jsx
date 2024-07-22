@@ -8,10 +8,7 @@ export default function Project({src ,name ,type,id , ...props}){
        <img className="project-box-img" src={src} />
        <h4>Name  :<span> {name}</span></h4>
        <p>Type : <span>{type}</span> </p>
-       <div className="shareCode">
-        <p>live</p>
-        <p>github</p>
-       </div>
+      
        </Link>
        </div>
        </>

@@ -25,9 +25,8 @@
             <>
             
             <div className="badge-section container">
-                <h2>Badge</h2>
+                <h2>Badge Component</h2>
             {BadgeSectionEl}
-            <Badge colors={"sss"} shape={'pills'}>HI</Badge>
             </div>
             </>
         )

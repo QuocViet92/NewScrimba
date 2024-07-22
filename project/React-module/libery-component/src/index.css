@@ -29,6 +29,7 @@ header h1, header p{
 .badge{
   padding:  2px 12px 2px 12px ;
   text-align:  center;
+  width: 60px;
 }
 .Square{
   border-radius: 4px;
@@ -184,7 +185,6 @@ box-shadow: 0px 20px 25px -5px #0000001A;
 
 .test-role{
   display: inline-flex;
-  
 }
 
 .test-logo{

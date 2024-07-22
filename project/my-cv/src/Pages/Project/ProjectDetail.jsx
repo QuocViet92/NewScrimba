@@ -23,15 +23,17 @@ export default function ProjectDetail(){
 
     return (
         <div className="project-detail">
-           <NavLink to={`/project`} className="back-link">Back to all</NavLink>
+            <div className="back-link">
+           <NavLink to={`/project`} >Back to all</NavLink>
+           </div>
             <img src={currentProject.imageUrl} />
             <h2>{currentProject.id}</h2>
             <h1>{currentProject.name}</h1>
             <p>Type : {currentProject.type}</p>
             <p>{currentProject.description}</p>
             <div className="shareCode">
-            <h4>Live</h4>
-            <h4>Github</h4>
+            <a href={currentProject.live} target='_blank'>Live</a>
+            <a href={currentProject.github} target='_blank'>Github</a>
             </div>
         </div>
     )
